@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gov.whitehouse"
+    android:versionCode="2"
+    android:versionName="2.0" >
+    <!--
+    The package name MUST be changed if you intend to fork and customize this app. The most
+    efficient way to do this is to use an IDE with refactoring support to rename the entire
+    package in all places and move the files into the new package directory.
+    -->
+
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <application android:name=".ui.WhiteHouseApplication"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/Theme.WhiteHouse"
+        android:label="@string/app_name">
+		<activity android:name=".ui.activities.app.HomeActivity" android:label="Your App Label">
+				<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.LAUNCHER" />
+				</intent-filter>
+		</activity>
+		<activity android:name=".ui.activities.app.ArticleListActivity" />
+		<activity android:name=".ui.activities.app.PhotoGalleryActivity" />
+		<activity android:name=".ui.activities.app.VideoGalleryActivity" />
+		<activity android:name=".ui.activities.app.LiveFeedActivity" />
+		<activity android:name=".ui.activities.app.FavoritesActivity" />
+		<activity android:name=".ui.activities.app.ArticleViewerActivity" />
+		<activity android:name=".ui.activities.app.VideoPlayerActivity"
+				android:screenOrientation="landscape" />
+        <activity android:name=".ui.activities.app.WHPreferencesActivity" />
+
+		<receiver android:name="com.urbanairship.CoreReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.ACTION_SHUTDOWN" />
+			</intent-filter>
+		</receiver>
+		<receiver android:name=".receivers.BootReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.ACTION_SHUTDOWN" />
+			</intent-filter>
+		</receiver>
+
+        <receiver android:name=".receivers.PushReceiver"></receiver>
+
+		<service android:name=".services.FeedService" />
+		<service android:name=".services.LiveService" />
+		<service android:name="com.urbanairship.push.PushService"
+				android:process=":com.urbanairship.push.process" />
+    </application>
+    
+</manifest>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      - Keys
+      -->
+
+    <!-- General -->
+    <string name="pref_key_general_notifications">pref_key_general_notifications</string>
+
+
+    <!--
+      - Titles
+      -->
+
+    <!-- General -->
+    <string name="prefheader_title_general">General</string>
+
+    <string name="pref_title_general_notifications">Notifications</string>
+
+
+    <!--
+      - Summaries
+      -->
+
+    <!-- General -->
+    <string name="prefheader_summary_general"></string>
+
+    <string name="pref_summary_general_notifications_on">Notifications are enabled.</string>
+    <string name="pref_summary_general_notifications_off">Notifications are disabled.</string>
+
+    <!--
+      - Defaults
+      -->
+    <bool name="pref_default_general_notifications">true</bool>
+</resources>

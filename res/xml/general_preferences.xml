@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:title="@string/prefheader_title_general">
+    <CheckBoxPreference
+            android:key="@string/pref_key_general_notifications"
+            android:title="@string/pref_title_general_notifications"
+            android:summaryOn="@string/pref_summary_general_notifications_on"
+            android:summaryOff="@string/pref_summary_general_notifications_off"
+            android:defaultValue="@bool/pref_default_general_notifications"/>
+</PreferenceScreen>

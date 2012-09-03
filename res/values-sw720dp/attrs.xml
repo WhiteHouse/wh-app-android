@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <dimen name="photos_grid_size">116dp</dimen>
+    <dimen name="list_thumbnail_height">200dp</dimen>
+
+    <bool name="multipaned">true</bool>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WhiteHouse" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+        <item name="popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
+        <item name="actionBarItemBackground">@drawable/selectable_background_whitehouse</item>
+        <item name="dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="actionBarTabStyle">@style/WhiteHouse_ActionBarTabStyle</item>
+        <item name="actionDropDownStyle">@style/WhiteHouse_DropDownNav</item>
+        <item name="actionBarStyle">@style/WhiteHouse_Solid_ActionBar</item>
+        <item name="vpiTabPageIndicatorStyle">@style/WhiteHouse_TabPageIndicator</item>
+
+        <item name="android:selectableItemBackground">@drawable/selectable_background_whitehouse
+        </item>
+        <item name="android:popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_whitehouse
+        </item>
+        <item name="android:dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="android:listViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="android:actionBarTabStyle">@style/WhiteHouse_ActionBarTabStyle</item>
+        <item name="android:actionDropDownStyle">@style/WhiteHouse_DropDownNav</item>
+        <item name="android:actionBarStyle">@style/WhiteHouse_Solid_ActionBar</item>
+        <item name="android:panelBackground">@drawable/menu_hardkey_panel_whitehouse</item>
+    </style>
+
+    <style name="Theme.WhiteHouse.Dark" parent="@style/Theme.Sherlock">
+        <item name="popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
+        <item name="actionBarItemBackground">@drawable/selectable_background_whitehouse</item>
+        <item name="dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="actionBarTabStyle">@style/WhiteHouse_ActionBarTabStyle</item>
+        <item name="actionDropDownStyle">@style/WhiteHouse_DropDownNav</item>
+        <item name="actionBarStyle">@style/WhiteHouse_Solid_ActionBar</item>
+        <item name="vpiTabPageIndicatorStyle">@style/WhiteHouse_TabPageIndicator</item>
+
+        <item name="android:selectableItemBackground">@drawable/selectable_background_whitehouse
+        </item>
+        <item name="android:popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_whitehouse
+        </item>
+        <item name="android:dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="android:listViewStyle">@style/WhiteHouse_DropDownListView</item>
+        <item name="android:actionBarTabStyle">@style/WhiteHouse_ActionBarTabStyle</item>
+        <item name="android:actionDropDownStyle">@style/WhiteHouse_DropDownNav</item>
+        <item name="android:actionBarStyle">@style/WhiteHouse_Solid_ActionBar</item>
+        <item name="android:panelBackground">@drawable/menu_hardkey_panel_whitehouse</item>
+    </style>
+
+    <style name="WhiteHouse_Solid_ActionBar"
+           parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/ab_background</item>
+        <item name="backgroundStacked">@drawable/ab_background</item>
+        <item name="backgroundSplit">@color/wh_blue_light</item>
+        <item name="progressBarStyle">@style/WhiteHouse_ProgressBar</item>
+        <item name="displayOptions">useLogo</item>
+        <item name="titleTextStyle">@style/WhiteHouse_ActionBar_TitleText</item>
+
+        <item name="android:background">@drawable/ab_background</item>
+        <item name="android:backgroundStacked">@drawable/ab_background</item>
+        <item name="android:backgroundSplit">@color/wh_blue_light</item>
+        <item name="android:progressBarStyle">@style/WhiteHouse_ProgressBar</item>
+        <item name="android:displayOptions">useLogo</item>
+        <item name="android:titleTextStyle">@style/WhiteHouse_ActionBar_TitleText</item>
+    </style>
+
+    <style name="WhiteHouse_Transparent_ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar">
+        <item name="background">@drawable/ab_transparent_whitehouse</item>
+        <item name="progressBarStyle">@style/WhiteHouse_ProgressBar</item>
+        <item name="displayOptions">useLogo</item>
+
+        <item name="android:background">@drawable/ab_transparent_whitehouse</item>
+        <item name="android:progressBarStyle">@style/WhiteHouse_ProgressBar</item>
+        <item name="android:displayOptions">useLogo</item>
+    </style>
+
+    <style name="WhiteHouse_ActionBar_TitleText"
+           parent="TextAppearance.Sherlock.Widget.ActionBar.Title.Inverse">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="WhiteHouse_TabPageIndicator" parent="@style/Widget.TabPageIndicator">
+        <item name="android:background">@drawable/tab_indicator_ab_whitehouse</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/wh_red</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="WhiteHouse_PopupMenu" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_whitehouse</item>
+    </style>
+
+    <style name="WhiteHouse_DropDownListView"
+           parent="@style/Widget.Sherlock.Light.ListView.DropDown">
+        <!--
+		<item name="android:listSelector">@drawable/selectable_background_whitehouse</item>
+		-->
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+    </style>
+
+    <style name="WhiteHouse_ActionBarTabStyle"
+           parent="@style/Widget.Sherlock.Light.ActionBar.TabView">
+        <item name="background">@drawable/tab_indicator_ab_whitehouse</item>
+
+        <item name="android:background">@drawable/tab_indicator_ab_whitehouse</item>
+    </style>
+
+    <style name="WhiteHouse_DropDownNav"
+           parent="@style/Widget.Sherlock.Light.Spinner.DropDown.ActionBar">
+        <item name="background">@drawable/spinner_background_ab_whitehouse</item>
+
+        <item name="android:background">@drawable/spinner_background_ab_whitehouse</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_whitehouse</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_whitehouse</item>
+    </style>
+
+    <style name="WhiteHouse_ProgressBar"
+           parent="@style/Widget.Sherlock.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_whitehouse</item>
+    </style>
+
+    <style name="WhiteHouse_Search_EditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:drawableLeft">@drawable/ic_menu_search</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/search_text_color</item>
+        <item name="android:textColorHint">@color/search_text_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionSearch</item>
+    </style>
+</resources>

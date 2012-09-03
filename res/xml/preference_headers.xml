@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+            android:fragment="gov.whitehouse.ui.fragments.StockPreferenceFragment"
+            android:title="@string/prefheader_title_general"
+            android:summary="@string/prefheader_summary_general">
+        <extra android:name="resource" android:value="general_preferences"/>
+    </header>
+</preference-headers>

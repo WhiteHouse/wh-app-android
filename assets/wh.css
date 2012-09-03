@@ -1,0 +1,97 @@
+body {
+    font-family: Arial;
+    font-size: 16px;
+    color: #333333;
+}
+
+@media screen and (min-width: 475px) {
+    body {
+        padding: 5% 10% 5% 10%;
+    }
+
+    .video-thumbnail img.thumbnail {
+        width: 400px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .video-thumbnail img.thumbnail {
+        width: 300px;
+        height: 225px;
+    }
+}
+
+.content img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.content img[width="1"] {
+    display:none;
+}
+
+.content p {
+    line-height: 1.4;
+}
+
+.content img + p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.0;
+}
+
+h1 {
+    color: black;
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.dateline {
+    color: #666666;
+    font-size: 14px;
+}
+
+.dateline a {
+    text-decoration: none;
+    color: #666666;
+}
+
+.content blockquote {
+    margin: 8px;
+    padding-left: 10px;
+    border-left: solid #003366 1px;
+}
+
+div.branding {
+    text-align: center;
+    border-top: solid #CCC 1px;
+    padding-top: 10px;
+}
+
+div.branding img {
+    width: 180px;
+    height: auto;
+}
+
+div.video-thumbnail {
+    position: relative;
+}
+
+div.video-thumbnail img.thumbnail {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.video-thumbnail img.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+    margin-left: -40px;
+    background: none;
+}

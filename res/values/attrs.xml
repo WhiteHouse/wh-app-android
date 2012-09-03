@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <dimen name="photos_grid_size">116dp</dimen>
+    <dimen name="list_thumbnail_height">200dp</dimen>
+
+    <bool name="multipaned">false</bool>
+
+    <!-- 300 seconds = 5 minutes -->
+    <integer name="live_feed_update_interval_seconds">300</integer>
+
+    <!-- Set on all HTTP requests directly created by the app, to avoid redirects -->
+    <string name="user_agent_string">Your App Name/Andy</string>
+
+    <!-- insert your analytics account here -->
+    <string name="google_analytics_account_id">Your Google Analytics Account ID</string>
+
+    <!-- number of seconds between automatic dispatch of cached page views -->
+    <integer name="google_analytics_dispatch_interval">30</integer>
+
+    <string name="bugsense_id">Your Bugsense ID</string>
+</resources>
