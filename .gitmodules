@@ -1,11 +1,11 @@
 [submodule "contrib/actionbarsherlock"]
 	path = contrib/actionbarsherlock
-	url = git://github.com/JakeWharton/ActionBarSherlock.git
+	url = https://github.com/JakeWharton/ActionBarSherlock.git
 	ignore = dirty
 [submodule "contrib/viewpagerindicator"]
 	path = contrib/viewpagerindicator
-	url = git://github.com/JakeWharton/Android-ViewPagerIndicator.git
+	url = https://github.com/JakeWharton/Android-ViewPagerIndicator.git
 	ignore = dirty
 [submodule "contrib/android-undergarment"]
 	path = contrib/android-undergarment
-	url = git://github.com/eddieringle/android-undergarment.git
+	url = https://github.com/eddieringle/android-undergarment.git
