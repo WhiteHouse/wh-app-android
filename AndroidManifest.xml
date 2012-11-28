@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gov.whitehouse"
-    android:versionCode="2"
-    android:versionName="2.0" >
+    android:versionCode="3"
+    android:versionName="2.0.1" >
     <!--
     The package name MUST be changed if you intend to fork and customize this app. The most
     efficient way to do this is to use an IDE with refactoring support to rename the entire
     package in all places and move the files into the new package directory.
     -->
-
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
     <uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,6 +15,15 @@
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <!-- permissions needed for Urban Airship -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!-- custom permission for Urban Airship -->
+    <permission android:name="gov.whitehouse.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="gov.whitehouse.permission.C2D_MESSAGE" />
 
     <application android:name=".ui.WhiteHouseApplication"
         android:icon="@drawable/ic_launcher"
@@ -37,12 +45,6 @@
 				android:screenOrientation="landscape" />
         <activity android:name=".ui.activities.app.WHPreferencesActivity" />
 
-		<receiver android:name="com.urbanairship.CoreReceiver">
-			<intent-filter>
-				<action android:name="android.intent.action.BOOT_COMPLETED" />
-				<action android:name="android.intent.action.ACTION_SHUTDOWN" />
-			</intent-filter>
-		</receiver>
 		<receiver android:name=".receivers.BootReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -54,8 +56,27 @@
 
 		<service android:name=".services.FeedService" />
 		<service android:name=".services.LiveService" />
-		<service android:name="com.urbanairship.push.PushService"
-				android:process=":com.urbanairship.push.process" />
+
+        <!-- Urban Airship receivers/services -->
+        <receiver android:name="com.urbanairship.CoreReceiver" />
+        <receiver android:name="com.urbanairship.push.GCMPushReceiver"
+                  android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="gov.whitehouse" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.urbanairship.push.PushService"
+                 android:label="Push Notification Service"/>
+        <service android:name="com.urbanairship.push.PushWorkerService"
+                 android:label="Push Notification Worker Service"/>
+        <service android:name="com.urbanairship.analytics.EventService"
+                 android:label="Event Service"/>
+        <provider android:name="com.urbanairship.UrbanAirshipProvider"
+                  android:authorities="gov.whitehouse.urbanairship.provider"
+                  android:exported="false"
+                  android:multiprocess="true" />
     </application>
     
 </manifest>
