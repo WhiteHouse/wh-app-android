@@ -33,6 +33,14 @@ will be able to configure the app to receive push
 notifications. Placeholder assets may be replaced to customize the
 app's look and feel.
 
+Search functionality on WhiteHouse.gov and in the White House for Android 
+mobile app relies on USASearch, a hosted site search service provided by 
+the U.S. General Services Administration (GSA). Federal, state, local, 
+tribal, or territorial government websites may use this service at no cost. 
+For details on incorporating USASearch into .Gov sites, or for examples of 
+the API and how it functions, see  [USASearch: About](http://usasearch.howto.gov/about-us)
+and  [USASearch: How (and When) to Use the Search API](http://usasearch.howto.gov/post/36743437542/how-and-when-to-use-the-search-api).
+
 ### Building the App
 
 The Android SDK for API level 16 is require to build the app.
@@ -57,7 +65,6 @@ The following libraries are included as source:
 
 Contributers are expected to adhere to the official [Android
 Code Style Guidelines][style].
-
 
 NOTE: Setting up the application and configuring it for use in your
 organization's context requires Android development experience. The
