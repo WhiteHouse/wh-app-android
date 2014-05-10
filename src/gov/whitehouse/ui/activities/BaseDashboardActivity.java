@@ -26,17 +26,26 @@
 
 package gov.whitehouse.ui.activities;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.MenuItem;
-import com.github.eddieringle.android.libs.undergarment.widgets.DrawerGarment;
+import static gov.whitehouse.core.DashboardItem.VIEW_TYPE_LIVE;
+import gov.whitehouse.core.DashboardItem;
+import gov.whitehouse.ui.adapters.DashboardListAdapter;
+import gov.whitehouse.ui.fragments.app.SearchResultsFragment;
+import gov.whitehouse.ui.loaders.DashboardLoader;
+import gov.whitehouse.utils.DashboardItemUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gov.whitehouse.R;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -45,17 +54,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import gov.whitehouse.R;
-import gov.whitehouse.core.DashboardItem;
-import gov.whitehouse.ui.adapters.DashboardListAdapter;
-import gov.whitehouse.ui.fragments.app.SearchResultsFragment;
-import gov.whitehouse.ui.loaders.DashboardLoader;
-import gov.whitehouse.utils.DashboardItemUtils;
-
-import static gov.whitehouse.core.DashboardItem.VIEW_TYPE_LIVE;
+import com.github.eddieringle.android.libs.undergarment.widgets.DrawerGarment;
 
 public class BaseDashboardActivity extends BaseActivity {
 

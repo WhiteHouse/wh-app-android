@@ -66,9 +66,9 @@ public class WhiteHouseApplication extends Application {
          */
         Intent serviceIntent = new Intent(this, LiveService.class);
         startService(serviceIntent);
-
+        
         AirshipConfigOptions options = AirshipConfigOptions.loadDefaultOptions(this);
-        options.iapEnabled = false;
+        options.inProduction = false;
         options.pushServiceEnabled = true;
 
         UAirship.takeOff(this, options);

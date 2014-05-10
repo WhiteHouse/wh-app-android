@@ -26,20 +26,39 @@
 
 package gov.whitehouse.ui.fragments.app;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
+import static gov.whitehouse.core.FeedItem.TYPE_ARTICLE;
+import static gov.whitehouse.core.FeedItem.TYPE_PHOTO;
+import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARG_FEED_TYPE;
+import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARTICLE_TYPE_FAVORITES;
+import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARTICLE_TYPE_FEED;
+import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_ARTICLES;
+import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_PHOTOS;
+import gov.whitehouse.core.FeedItem;
+import gov.whitehouse.ui.activities.BaseActivity;
+import gov.whitehouse.ui.fragments.BaseFragment;
+import gov.whitehouse.utils.FavoritesUtils;
+import gov.whitehouse.utils.GsonUtils;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import gov.whitehouse.R;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
@@ -48,25 +67,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import gov.whitehouse.R;
-import gov.whitehouse.core.FeedItem;
-import gov.whitehouse.ui.activities.BaseActivity;
-import gov.whitehouse.ui.fragments.BaseFragment;
-import gov.whitehouse.utils.FavoritesUtils;
-import gov.whitehouse.utils.GsonUtils;
-
-import static gov.whitehouse.core.FeedItem.TYPE_ARTICLE;
-import static gov.whitehouse.core.FeedItem.TYPE_PHOTO;
-import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARG_FEED_TYPE;
-import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARTICLE_TYPE_FAVORITES;
-import static gov.whitehouse.ui.fragments.app.ArticleListFragment.ARTICLE_TYPE_FEED;
-import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_ARTICLES;
-import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_PHOTOS;
 
 public class ArticleViewerFragment extends BaseFragment {
 
@@ -168,13 +168,13 @@ public class ArticleViewerFragment extends BaseFragment {
 
         mArticleType = args.getInt(ARG_FEED_TYPE, ARTICLE_TYPE_FEED);
         mUpTitle = args.getString(ARG_UP_TITLE);
-        if (!((BaseActivity) getSherlockActivity()).isMultipaned()) {
+        if (!((BaseActivity) getActivity()).isMultipaned()) {
             switch (mArticleType) {
                 case ARTICLE_TYPE_FEED:
-                    getSherlockActivity().getSupportActionBar().setTitle(mUpTitle.toUpperCase());
+                    ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(mUpTitle.toUpperCase());
                     break;
                 case ARTICLE_TYPE_FAVORITES:
-                    getSherlockActivity().getSupportActionBar().setTitle(R.string.favorites);
+                    ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(R.string.favorites);
                     break;
             }
         }
@@ -184,16 +184,16 @@ public class ArticleViewerFragment extends BaseFragment {
             mFeedItem = GsonUtils.fromJson(json, FeedItem.class);
         }
 
-        mFavorited = FavoritesUtils.isFavorited(getSherlockActivity(), mFeedItem);
+        mFavorited = FavoritesUtils.isFavorited(getActivity(), mFeedItem);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+        ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
 
-        if (!((BaseActivity) getSherlockActivity()).isMultipaned()) {
+        if (!((BaseActivity) getActivity()).isMultipaned()) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -208,7 +208,7 @@ public class ArticleViewerFragment extends BaseFragment {
             shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, mPageInfo.getString("url"));
-            ShareActionProvider sap = (ShareActionProvider) shareItem.getActionProvider();
+            ShareActionProvider sap = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
             sap.setShareHistoryFileName(ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME);
             sap.setShareIntent(shareIntent);
         } catch (JSONException e) {
@@ -230,23 +230,23 @@ public class ArticleViewerFragment extends BaseFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            getSherlockActivity().onBackPressed();
+            getActivity().onBackPressed();
             return true;
         } else if (item.getItemId() == R.id.menu_favorite) {
             if (mFavorited) {
                 switch (mArticleType) {
                     case ARTICLE_TYPE_FEED:
-                        FavoritesUtils.removeFromFavorites(getSherlockActivity(), FAVORITE_ARTICLES,
+                        FavoritesUtils.removeFromFavorites(getActivity(), FAVORITE_ARTICLES,
                                 mFeedItem);
                         break;
                     case ARTICLE_TYPE_FAVORITES:
                         if (mFeedItem.getType() == TYPE_ARTICLE) {
                             FavoritesUtils
-                                    .removeFromFavorites(getSherlockActivity(), FAVORITE_ARTICLES,
+                                    .removeFromFavorites(getActivity(), FAVORITE_ARTICLES,
                                             mFeedItem);
                         } else if (mFeedItem.getType() == TYPE_PHOTO) {
                             FavoritesUtils
-                                    .removeFromFavorites(getSherlockActivity(), FAVORITE_PHOTOS,
+                                    .removeFromFavorites(getActivity(), FAVORITE_PHOTOS,
                                             mFeedItem);
                         }
                         break;
@@ -256,15 +256,15 @@ public class ArticleViewerFragment extends BaseFragment {
             } else {
                 switch (mArticleType) {
                     case ARTICLE_TYPE_FEED:
-                        FavoritesUtils.addToFavorites(getSherlockActivity(), FAVORITE_ARTICLES,
+                        FavoritesUtils.addToFavorites(getActivity(), FAVORITE_ARTICLES,
                                 mFeedItem);
                         break;
                     case ARTICLE_TYPE_FAVORITES:
                         if (mFeedItem.getType() == TYPE_ARTICLE) {
-                            FavoritesUtils.addToFavorites(getSherlockActivity(), FAVORITE_ARTICLES,
+                            FavoritesUtils.addToFavorites(getActivity(), FAVORITE_ARTICLES,
                                     mFeedItem);
                         } else if (mFeedItem.getType() == TYPE_PHOTO) {
-                            FavoritesUtils.addToFavorites(getSherlockActivity(), FAVORITE_PHOTOS,
+                            FavoritesUtils.addToFavorites(getActivity(), FAVORITE_PHOTOS,
                                     mFeedItem);
                         }
                         break;

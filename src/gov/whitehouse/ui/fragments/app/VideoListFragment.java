@@ -26,24 +26,12 @@
 
 package gov.whitehouse.ui.fragments.app;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ProgressBar;
-
-import java.net.URI;
-import java.util.List;
-
-import gov.whitehouse.R;
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_ITEM_JSON;
+import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_UP_TITLE;
 import gov.whitehouse.core.FeedItem;
 import gov.whitehouse.ui.activities.app.VideoPlayerActivity;
 import gov.whitehouse.ui.adapters.FeedItemsListAdapter;
@@ -51,12 +39,22 @@ import gov.whitehouse.ui.fragments.BaseFragment;
 import gov.whitehouse.ui.loaders.FeedReaderLoader;
 import gov.whitehouse.utils.GsonUtils;
 
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_ITEM_JSON;
-import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_UP_TITLE;
+import java.net.URI;
+import java.util.List;
+
+import gov.whitehouse.R;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ProgressBar;
 
 public class VideoListFragment extends BaseFragment
         implements LoaderManager.LoaderCallbacks<List<FeedItem>> {
@@ -90,7 +88,7 @@ public class VideoListFragment extends BaseFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Bundle args = getSherlockActivity().getIntent().getExtras();
+        Bundle args = getActivity().getIntent().getExtras();
         if (args != null) {
             mTitle = args.getString(ARG_VIDEO_LIST_TITLE);
             mVideosUrl = args.getString(ARG_VIDEO_FEED_URL);
@@ -103,7 +101,7 @@ public class VideoListFragment extends BaseFragment
             mVideosUrl = getString(R.string.video_feed_url);
         }
 
-        SherlockFragmentActivity activity = getSherlockActivity();
+        ActionBarActivity activity = (ActionBarActivity)getActivity();
         String title = mTitle.toUpperCase();
         activity.getSupportActionBar().setTitle(title);
         activity.setTitle(title);
@@ -136,19 +134,19 @@ public class VideoListFragment extends BaseFragment
                     Uri uri = Uri.parse(item.getVideoLink().toString());
                     intent = new Intent(Intent.ACTION_VIEW, uri);
                 } else {
-                    intent = new Intent(getSherlockActivity(), VideoPlayerActivity.class);
+                    intent = new Intent(getActivity(), VideoPlayerActivity.class);
                     intent.putExtra(ARG_ITEM_JSON, GsonUtils.toJson(item));
                     intent.putExtra(ARG_UP_TITLE, mTitle);
                 }
 
-                getSherlockActivity().startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
     }
 
     @Override
     public Loader<List<FeedItem>> onCreateLoader(int i, Bundle bundle) {
-        return new FeedReaderLoader(getSherlockActivity(), URI.create(mVideosUrl), mTitle);
+        return new FeedReaderLoader(getActivity(), URI.create(mVideosUrl), mTitle);
     }
 
     @Override

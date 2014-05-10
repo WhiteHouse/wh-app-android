@@ -79,7 +79,7 @@ public class PhotoGalleryActivity extends BaseDashboardActivity
             implements IPhotosCallbacks {
 
         public PhotoGalleryActivity getPhotoActivity() {
-            return (PhotoGalleryActivity) getSherlockActivity();
+            return (PhotoGalleryActivity) getActivity();
         }
     }
 

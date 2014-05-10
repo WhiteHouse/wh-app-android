@@ -26,20 +26,32 @@
 
 package gov.whitehouse.ui.fragments.app;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
-import com.androidquery.AQuery;
-import com.viewpagerindicator.CirclePageIndicator;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+import static android.view.View.inflate;
+import static gov.whitehouse.ui.activities.app.PhotoGalleryActivity.NO_SELECTION;
+import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_PHOTOS;
+import gov.whitehouse.core.FeedItem;
+import gov.whitehouse.ui.activities.app.PhotoGalleryActivity;
+import gov.whitehouse.ui.activities.app.PhotoGalleryActivity.BasePhotoFragment;
+import gov.whitehouse.utils.FavoritesUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gov.whitehouse.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.ShareActionProvider;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -48,24 +60,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import gov.whitehouse.R;
-import gov.whitehouse.core.FeedItem;
-import gov.whitehouse.ui.activities.app.PhotoGalleryActivity;
-import gov.whitehouse.utils.FavoritesUtils;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static android.view.View.inflate;
-import static com.actionbarsherlock.widget.ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME;
-import static gov.whitehouse.ui.activities.app.PhotoGalleryActivity.BasePhotoFragment;
-import static gov.whitehouse.ui.activities.app.PhotoGalleryActivity.NO_SELECTION;
-import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_PHOTOS;
+import com.androidquery.AQuery;
+import com.viewpagerindicator.CirclePageIndicator;
 
 public class PhotoDetailFragment extends BasePhotoFragment
         implements PhotoGalleryActivity.IPhotosCallbacks {
+	
+	public static final String DEFAULT_SHARE_HISTORY_FILE_NAME = "share_history.xml";
 
     private boolean mFavorited;
 
@@ -202,7 +203,7 @@ public class PhotoDetailFragment extends BasePhotoFragment
 
     @Override
     public void onNewPhotos(List<FeedItem> photos) {
-        mPagerAdapter = new PhotoPagerAdapter(getSherlockActivity(), photos);
+        mPagerAdapter = new PhotoPagerAdapter(getActivity(), photos);
         mViewPager.setAdapter(mPagerAdapter);
         mCirclePageIndicator.setViewPager(mViewPager);
 
@@ -216,7 +217,7 @@ public class PhotoDetailFragment extends BasePhotoFragment
                 getPhotoActivity().setCurrentSelection(i);
 
                 if (mShareActionProvider == null || mShareIntent == null) {
-                    getSherlockActivity().supportInvalidateOptionsMenu();
+                    getActivity().supportInvalidateOptionsMenu();
                 } else {
                     mShareIntent.putExtra(Intent.EXTRA_TEXT,
                             getPhotoActivity().getPhotoItems().get(i)
@@ -225,9 +226,9 @@ public class PhotoDetailFragment extends BasePhotoFragment
                 }
 
                 if (mFavoriteItem == null) {
-                    getSherlockActivity().supportInvalidateOptionsMenu();
+                    getActivity().supportInvalidateOptionsMenu();
                 } else {
-                    mFavorited = FavoritesUtils.isFavorited(getSherlockActivity(),
+                    mFavorited = FavoritesUtils.isFavorited(getActivity(),
                             getPhotoActivity().getPhotoItems()
                                     .get(i));
                     if (mFavorited) {
@@ -284,7 +285,7 @@ public class PhotoDetailFragment extends BasePhotoFragment
         }
         try {
             mShareIntent.setType("text/plain");
-            mShareActionProvider = (ShareActionProvider) mShareItem.getActionProvider();
+            mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(mShareItem);
             mShareActionProvider.setShareHistoryFileName(DEFAULT_SHARE_HISTORY_FILE_NAME);
             mShareActionProvider.setShareIntent(mShareIntent);
         } catch (Exception e) {
@@ -309,13 +310,13 @@ public class PhotoDetailFragment extends BasePhotoFragment
             return super.onOptionsItemSelected(item);
         } else if (item.getItemId() == R.id.menu_favorite) {
             if (mFavorited) {
-                FavoritesUtils.removeFromFavorites(getSherlockActivity(), FAVORITE_PHOTOS,
+                FavoritesUtils.removeFromFavorites(getActivity(), FAVORITE_PHOTOS,
                         getPhotoActivity().getPhotoItems()
                                 .get(mViewPager.getCurrentItem()));
                 item.setTitle(R.string.favorite);
                 item.setIcon(R.drawable.ic_unfavorite);
             } else {
-                FavoritesUtils.addToFavorites(getSherlockActivity(), FAVORITE_PHOTOS,
+                FavoritesUtils.addToFavorites(getActivity(), FAVORITE_PHOTOS,
                         getPhotoActivity().getPhotoItems()
                                 .get(mViewPager.getCurrentItem()));
                 item.setTitle(R.string.unfavorite);

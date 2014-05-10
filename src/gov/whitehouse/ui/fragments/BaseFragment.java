@@ -26,19 +26,18 @@
 
 package gov.whitehouse.ui.fragments;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-
-import android.content.Intent;
-
-import gov.whitehouse.R;
 import gov.whitehouse.ui.activities.BaseActivity;
 import gov.whitehouse.ui.activities.app.WHPreferencesActivity;
+import gov.whitehouse.R;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-public abstract class BaseFragment extends SherlockFragment {
+public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onStart() {
@@ -53,7 +52,7 @@ public abstract class BaseFragment extends SherlockFragment {
         menu.clear();
         inflater.inflate(R.menu.menu, menu);
 
-        ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+        ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
 
         actionBar.setLogo(R.drawable.logo_wh);
         actionBar.setIcon(R.drawable.ic_menu);
@@ -77,6 +76,6 @@ public abstract class BaseFragment extends SherlockFragment {
     }
 
     public BaseActivity getBaseActivity() {
-        return (BaseActivity) getSherlockActivity();
+        return (BaseActivity) getActivity();
     }
 }

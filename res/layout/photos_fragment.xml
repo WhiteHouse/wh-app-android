@@ -8,7 +8,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:indeterminateOnly="true"
-                 style="@style/Widget.Sherlock.ProgressBar"
+                 style="@style/Widget.AppCompat.ProgressBar"
                  android:visibility="gone"/>
     <GridView android:id="@+id/gv_photos"
               android:layout_width="match_parent"

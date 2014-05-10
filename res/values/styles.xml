@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.WhiteHouse" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+    <style name="Theme.WhiteHouse" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
         <item name="actionBarItemBackground">@drawable/selectable_background_whitehouse</item>
         <item name="dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
@@ -22,7 +22,7 @@
         <item name="android:panelBackground">@drawable/menu_hardkey_panel_whitehouse</item>
     </style>
 
-    <style name="Theme.WhiteHouse.Dark" parent="@style/Theme.Sherlock">
+    <style name="Theme.WhiteHouse.Dark" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/WhiteHouse_PopupMenu</item>
         <item name="actionBarItemBackground">@drawable/selectable_background_whitehouse</item>
         <item name="dropDownListViewStyle">@style/WhiteHouse_DropDownListView</item>
@@ -45,7 +45,7 @@
     </style>
 
     <style name="WhiteHouse_Solid_ActionBar"
-           parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+           parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@drawable/ab_background</item>
         <item name="backgroundStacked">@drawable/ab_background</item>
         <item name="backgroundSplit">@color/wh_blue_light</item>
@@ -61,7 +61,7 @@
         <item name="android:titleTextStyle">@style/WhiteHouse_ActionBar_TitleText</item>
     </style>
 
-    <style name="WhiteHouse_Transparent_ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar">
+    <style name="WhiteHouse_Transparent_ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="background">@drawable/ab_transparent_whitehouse</item>
         <item name="progressBarStyle">@style/WhiteHouse_ProgressBar</item>
         <item name="displayOptions">useLogo</item>
@@ -72,7 +72,7 @@
     </style>
 
     <style name="WhiteHouse_ActionBar_TitleText"
-           parent="TextAppearance.Sherlock.Widget.ActionBar.Title.Inverse">
+           parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
         <item name="android:textColor">#ffffff</item>
         <item name="android:typeface">serif</item>
     </style>
@@ -89,7 +89,7 @@
     </style>
 
     <style name="WhiteHouse_DropDownListView"
-           parent="@style/Widget.Sherlock.Light.ListView.DropDown">
+           parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <!--
 		<item name="android:listSelector">@drawable/selectable_background_whitehouse</item>
 		-->
@@ -97,14 +97,14 @@
     </style>
 
     <style name="WhiteHouse_ActionBarTabStyle"
-           parent="@style/Widget.Sherlock.Light.ActionBar.TabView">
+           parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="background">@drawable/tab_indicator_ab_whitehouse</item>
 
         <item name="android:background">@drawable/tab_indicator_ab_whitehouse</item>
     </style>
 
     <style name="WhiteHouse_DropDownNav"
-           parent="@style/Widget.Sherlock.Light.Spinner.DropDown.ActionBar">
+           parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="background">@drawable/spinner_background_ab_whitehouse</item>
 
         <item name="android:background">@drawable/spinner_background_ab_whitehouse</item>
@@ -113,7 +113,7 @@
     </style>
 
     <style name="WhiteHouse_ProgressBar"
-           parent="@style/Widget.Sherlock.Light.ProgressBar.Horizontal">
+           parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_whitehouse</item>
     </style>
 

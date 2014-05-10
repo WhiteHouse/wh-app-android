@@ -142,7 +142,7 @@ public class ArticleListFragment extends BaseListFragment
 
         setRetainInstance(true);
 
-        final Bundle args = getSherlockActivity().getIntent().getExtras();
+        final Bundle args = getActivity().getIntent().getExtras();
         if (args != null) {
             mFeedType = args.getInt(ARG_FEED_TYPE, ARTICLE_TYPE_FAVORITES);
             mFeedURL = args.getString(ARG_FEED_URL);
@@ -161,9 +161,9 @@ public class ArticleListFragment extends BaseListFragment
         super.onActivityCreated(savedInstanceState);
 
         if (mFeedTitle == null) {
-            getSherlockActivity().setTitle("");
+            getActivity().setTitle("");
         } else {
-            getSherlockActivity().setTitle(mFeedTitle.toUpperCase());
+            getActivity().setTitle(mFeedTitle.toUpperCase());
         }
     }
 
@@ -182,13 +182,13 @@ public class ArticleListFragment extends BaseListFragment
             }
 
             IntentFilter refreshFilter = new IntentFilter(FeedService.REFRESH_FEED_UI_INTENT);
-            getSherlockActivity().registerReceiver(mArticleFeedReceiver, refreshFilter);
+            getActivity().registerReceiver(mArticleFeedReceiver, refreshFilter);
 
-            final Intent startService = new Intent(getSherlockActivity(), FeedService.class);
+            final Intent startService = new Intent(getActivity(), FeedService.class);
             startService.putExtra(FeedService.ARG_FEED_TITLE, mFeedTitle);
             startService.putExtra(FeedService.ARG_FEED_URL, mFeedURL);
             startService.setAction(FeedService.GET_FEED_DATA_INTENT);
-            getSherlockActivity().startService(startService);
+            getActivity().startService(startService);
         }
 
         final int padding = (int) (applyDimension(COMPLEX_UNIT_DIP, 6.0f,
@@ -208,7 +208,7 @@ public class ArticleListFragment extends BaseListFragment
         try {
             if (mArticleFeedReceiver != null) {
                 /* Unregister the receiver when we pause the fragment */
-                getSherlockActivity().unregisterReceiver(mArticleFeedReceiver);
+                getActivity().unregisterReceiver(mArticleFeedReceiver);
             }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
@@ -223,7 +223,7 @@ public class ArticleListFragment extends BaseListFragment
         if (mFeedType == ARTICLE_TYPE_FAVORITES && item.getType() == TYPE_VIDEO) {
             args.putString(VideoPlayerActivity.ARG_ITEM_JSON, GsonUtils.toJson(item));
             args.putString(VideoPlayerActivity.ARG_UP_TITLE, getString(R.string.favorites));
-            final Intent nextIntent = new Intent(getSherlockActivity(), VideoPlayerActivity.class);
+            final Intent nextIntent = new Intent(getActivity(), VideoPlayerActivity.class);
             nextIntent.putExtras(args);
             startActivity(nextIntent);
             return;
@@ -239,7 +239,7 @@ public class ArticleListFragment extends BaseListFragment
             args.putString("url", item.getLink().toString());
         }
 
-        final BaseActivity activity = (BaseActivity) getSherlockActivity();
+        final BaseActivity activity = (BaseActivity) getActivity();
         if (activity.isMultipaned()) {
             // track multi-pane article views here
             GATrackingManager.getInstance().track(activity.getTrackingPathComponent(), item.getTitle());
@@ -249,7 +249,7 @@ public class ArticleListFragment extends BaseListFragment
             activity.getSupportFragmentManager().beginTransaction()
                     .replace(R.id.details_container, detailsFragment).commit();
         } else {
-            final Intent nextIntent = new Intent(getSherlockActivity(),
+            final Intent nextIntent = new Intent(getActivity(),
                     ArticleViewerActivity.class);
             nextIntent.putExtras(args);
             startActivity(nextIntent);
@@ -259,9 +259,9 @@ public class ArticleListFragment extends BaseListFragment
     @Override
     public Loader<List<FeedItem>> onCreateLoader(int i, Bundle bundle) {
         if (mFeedType == ARTICLE_TYPE_FAVORITES) {
-            return new FavoritesLoader(getSherlockActivity());
+            return new FavoritesLoader(getActivity());
         } else {
-            return new FeedReaderLoader(getSherlockActivity(), URI.create(mFeedURL), mFeedTitle);
+            return new FeedReaderLoader(getActivity(), URI.create(mFeedURL), mFeedTitle);
         }
     }
 
