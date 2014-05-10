@@ -26,18 +26,16 @@
 
 package gov.whitehouse.ui.activities.app;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
-import com.actionbarsherlock.view.MenuItem;
-
-import android.os.Build;
-import android.os.Bundle;
-
 import java.util.List;
 
 import gov.whitehouse.R;
+import android.app.ActionBar;
+import android.os.Build;
+import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.view.MenuItem;
 
-public class WHPreferencesActivity extends SherlockPreferenceActivity {
+public class WHPreferencesActivity extends PreferenceActivity {
 
     @SuppressWarnings("deprecation")
     @Override
@@ -45,7 +43,7 @@ public class WHPreferencesActivity extends SherlockPreferenceActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_WhiteHouse);
 
-        ActionBar ab = getSupportActionBar();
+        ActionBar ab = getActionBar();
 
         ab.setIcon(R.drawable.ic_launcher);
         ab.setTitle(getString(R.string.settings).toUpperCase());

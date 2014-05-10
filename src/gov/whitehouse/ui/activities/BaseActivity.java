@@ -26,19 +26,18 @@
 
 package gov.whitehouse.ui.activities;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
-import com.androidquery.util.AQUtility;
-
-import android.content.Intent;
-import android.os.Bundle;
-
-import gov.whitehouse.R;
 import gov.whitehouse.ui.activities.app.WHPreferencesActivity;
 import gov.whitehouse.utils.GATrackingManager;
+import gov.whitehouse.R;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
+
+import com.androidquery.util.AQUtility;
 
 
-public class BaseActivity extends SherlockFragmentActivity {
+public class BaseActivity extends ActionBarActivity {
 
     private boolean mIsMultipaned;
 

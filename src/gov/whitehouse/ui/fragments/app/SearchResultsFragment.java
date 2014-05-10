@@ -26,31 +26,30 @@
 
 package gov.whitehouse.ui.fragments.app;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockListFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import android.view.View;
-import android.widget.ListView;
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+import gov.whitehouse.core.SearchResult;
+import gov.whitehouse.ui.adapters.SearchResultsListAdapter;
+import gov.whitehouse.ui.loaders.SearchResultsLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import gov.whitehouse.R;
-import gov.whitehouse.core.SearchResult;
-import gov.whitehouse.ui.adapters.SearchResultsListAdapter;
-import gov.whitehouse.ui.loaders.SearchResultsLoader;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.widget.ListView;
 
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
-
-public class SearchResultsFragment extends SherlockListFragment
+public class SearchResultsFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<List<SearchResult>> {
 
     private static int LOADER_SEARCH = 404;
@@ -91,7 +90,7 @@ public class SearchResultsFragment extends SherlockListFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        ActionBar actionBar = getSherlockActivity().getSupportActionBar();
+        ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
 
         actionBar.setLogo(R.drawable.logo_wh);
         actionBar.setIcon(R.drawable.ic_menu);
@@ -105,7 +104,7 @@ public class SearchResultsFragment extends SherlockListFragment
 
     @Override
     public Loader<List<SearchResult>> onCreateLoader(int i, Bundle bundle) {
-        return new SearchResultsLoader(getSherlockActivity(), mQuery);
+        return new SearchResultsLoader(getActivity(), mQuery);
     }
 
     @Override
@@ -114,7 +113,7 @@ public class SearchResultsFragment extends SherlockListFragment
         mSearchResults = new ArrayList<SearchResult>();
         mSearchResults.addAll(searchResults);
 
-        mAdapter = new SearchResultsListAdapter(getSherlockActivity());
+        mAdapter = new SearchResultsListAdapter(getActivity());
         mAdapter.fillWithItems(mSearchResults);
         mAdapter.notifyDataSetChanged();
 

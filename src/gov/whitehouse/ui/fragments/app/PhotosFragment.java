@@ -96,7 +96,7 @@ public class
 
     @Override
     public void onNewPhotos(List<FeedItem> photos) {
-        mAdapter = new PhotosListAdapter(getSherlockActivity());
+        mAdapter = new PhotosListAdapter(getActivity());
         mAdapter.fillWithItems(photos);
         mGridView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();

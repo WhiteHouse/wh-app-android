@@ -26,31 +26,30 @@
 
 package gov.whitehouse.ui.activities.app;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
-
-import android.content.Intent;
-import android.graphics.PixelFormat;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.widget.MediaController;
-import android.widget.Toast;
-import android.widget.VideoView;
-
-import java.util.Date;
-
-import gov.whitehouse.R;
+import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_VIDEOS;
 import gov.whitehouse.core.FeedItem;
 import gov.whitehouse.ui.activities.BaseActivity;
 import gov.whitehouse.utils.FavoritesUtils;
 import gov.whitehouse.utils.GATrackingManager;
 import gov.whitehouse.utils.GsonUtils;
 
-import static gov.whitehouse.utils.FavoritesUtils.FAVORITE_VIDEOS;
+import java.util.Date;
+
+import gov.whitehouse.R;
+import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.ShareActionProvider;
+import android.support.v4.view.MenuItemCompat;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.MediaController;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 public class VideoPlayerActivity extends BaseActivity {
 
@@ -142,7 +141,7 @@ public class VideoPlayerActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         ActionBar actionBar = this.getSupportActionBar();
 
-        getSupportMenuInflater().inflate(R.menu.article, menu);
+        getMenuInflater().inflate(R.menu.article, menu);
 
         actionBar.setLogo(R.drawable.logo_wh);
         actionBar.setIcon(R.drawable.ic_launcher);
@@ -159,7 +158,7 @@ public class VideoPlayerActivity extends BaseActivity {
         shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, mFeedItem.getLink().toString());
-        ShareActionProvider sap = (ShareActionProvider) shareItem.getActionProvider();
+        ShareActionProvider sap = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
         sap.setShareHistoryFileName(ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME);
         sap.setShareIntent(shareIntent);
 

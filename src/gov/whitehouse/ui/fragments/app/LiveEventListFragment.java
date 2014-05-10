@@ -26,19 +26,12 @@
 
 package gov.whitehouse.ui.fragments.app;
 
-import com.google.gson.reflect.TypeToken;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-
-import java.util.List;
-
-import gov.whitehouse.R;
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+import static gov.whitehouse.services.LiveService.EXTRA_JSON;
+import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_IS_LIVE;
+import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_ITEM_JSON;
+import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_UP_TITLE;
 import gov.whitehouse.core.FeedItem;
 import gov.whitehouse.services.LiveService;
 import gov.whitehouse.ui.activities.app.VideoPlayerActivity;
@@ -46,12 +39,19 @@ import gov.whitehouse.ui.adapters.FeedItemsListAdapter;
 import gov.whitehouse.ui.fragments.BaseListFragment;
 import gov.whitehouse.utils.GsonUtils;
 
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
-import static gov.whitehouse.services.LiveService.EXTRA_JSON;
-import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_IS_LIVE;
-import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_ITEM_JSON;
-import static gov.whitehouse.ui.activities.app.VideoPlayerActivity.ARG_UP_TITLE;
+import java.util.List;
+
+import gov.whitehouse.R;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.google.gson.reflect.TypeToken;
 
 public class LiveEventListFragment extends BaseListFragment {
 
@@ -98,7 +98,7 @@ public class LiveEventListFragment extends BaseListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getSherlockActivity().getSupportActionBar()
+        ((ActionBarActivity)getActivity()).getSupportActionBar()
                 .setTitle(getString(R.string.live).toUpperCase());
     }
 
@@ -134,11 +134,11 @@ public class LiveEventListFragment extends BaseListFragment {
         }
 
         IntentFilter refreshFilter = new IntentFilter(LiveService.REFRESH_LIVE_UI_INTENT);
-        getSherlockActivity().registerReceiver(mRefreshLiveReceiver, refreshFilter);
+        getActivity().registerReceiver(mRefreshLiveReceiver, refreshFilter);
 
-        final Intent startService = new Intent(getSherlockActivity(), LiveService.class);
+        final Intent startService = new Intent(getActivity(), LiveService.class);
         startService.setAction(LiveService.GET_LIVE_DATA_INTENT);
-        getSherlockActivity().startService(startService);
+        getActivity().startService(startService);
     }
 
     @Override
@@ -148,7 +148,7 @@ public class LiveEventListFragment extends BaseListFragment {
         try {
             if (mRefreshLiveReceiver != null) {
                 /* Unregister the receiver when we pause the fragment */
-                getSherlockActivity().unregisterReceiver(mRefreshLiveReceiver);
+                getActivity().unregisterReceiver(mRefreshLiveReceiver);
             }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
