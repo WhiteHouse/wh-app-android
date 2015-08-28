@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gov.whitehouse" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission android:name="${applicationId}.permission.UA_DATA" android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.UA_DATA" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="${applicationId}.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".app.wh.WHApp"
+        android:theme="@style/Theme.WhiteHouse">
+        <activity
+            android:name=".app.wh.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".app.wh.NoConnActivity" />
+
+        <receiver
+            android:name=".content.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".content.ShutdownReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".content.NotificationPublisher" />
+
+        <receiver
+            android:name=".content.PushReceiver"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
+                <action android:name="com.urbanairship.push.OPENED" />
+                <action android:name="com.urbanairship.push.RECEIVED" />
+                <action android:name="com.urbanairship.push.DISMISSED" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".app.wh.LiveService" />
+
+        <!--
+            Urban Airship
+        -->
+        <activity
+            android:name="com.urbanairship.actions.ActionActivity" />
+        <activity
+            android:name="com.urbanairship.CoreActivity" />
+
+        <receiver
+            android:name="com.urbanairship.CoreReceiver"
+            android:exported="false">
+
+            <intent-filter
+                android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.urbanairship.push.PushService"
+            android:label="Push Notification Service" />
+
+        <service
+            android:name="com.urbanairship.analytics.EventService"
+            android:label="Event Service" />
+
+        <service
+            android:name="com.urbanairship.actions.ActionService" />
+
+        <service
+            android:name="com.urbanairship.richpush.RichPushUpdateService" />
+
+        <provider
+            android:authorities="${applicationId}.urbanairship.provider"
+            android:name="com.urbanairship.UrbanAirshipProvider"
+            android:permission="${applicationId}.permission.UA_DATA"
+            android:exported="true"
+            android:multiprocess="true" />
+
+        <!--
+            Google Play Services/GCM
+        -->
+        <activity
+            android:name="com.urbanairship.google.PlayServicesErrorActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name="com.urbanairship.push.GCMPushReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

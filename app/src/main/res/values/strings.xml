@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">White House</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_news">News</string>
+
+    <string name="title_blog">Blog</string>
+    <string name="title_briefing_room">Briefing Room</string>
+    <string name="title_photos">Photos</string>
+    <string name="title_videos">Videos</string>
+    <string name="title_live">Live</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Settings</string>
+
+    <string name="dashboard_config_url">http://www.whitehouse.gov/sites/default/files/feeds/config.json</string>
+    <string name="live_feed_url">http://www.whitehouse.gov/feed/mobile/live</string>
+
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+
+    <string name="search_hint">Search WhiteHouse.gov</string>
+
+    <string name="empty_favorites_list">
+        Use the {icon} button to save your favorite articles, photos, and videos.
+    </string>
+
+    <string name="empty_live_list">
+        There are no events currently scheduled.\n
+        \n
+        Go to the video section to view our on-demand videos.
+    </string>
+
+    <string name="happening_now">Happening Now</string>
+
+    <string name="no_network">No network connection, please try again later</string>
+    <string name="no_connection_screen">
+        The White House application is unable to connect to the Internet. At this time, no
+        offline functionality is supported, so the application will not be able to
+        progress any further. We apologize if this has interrupted your browsing experience.
+        Please try again later after ensuring your device is connected to a network.
+    </string>
+</resources>

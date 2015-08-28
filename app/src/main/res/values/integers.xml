@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="live_feed_update_interval_sec">300</integer>
+
+    <integer name="feed_grid_columns">1</integer>
+    <integer name="photo_grid_columns">2</integer>
+
+    <integer name="video_item_title_minLines">1</integer>
+</resources>

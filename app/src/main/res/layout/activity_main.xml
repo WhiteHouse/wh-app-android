@@ -1,0 +1,77 @@
+<gov.whitehouse.widget.HackyDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@android:color/primary_text_dark"
+                />
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/live_bar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/wh_secondary_orange"
+            android:elevation="3dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            />
+
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            >
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                />
+
+            <FrameLayout
+                android:id="@+id/search_container"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/left_drawer"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/drawer_bg"
+        android:fitsSystemWindows="true"
+        android:elevation="@dimen/drawer_elevation"
+        />
+</gov.whitehouse.widget.HackyDrawerLayout>

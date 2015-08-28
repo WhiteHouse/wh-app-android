@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selector_frame"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:foreground="@drawable/wh_selectable_list_background"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    >
+    <TextView
+        android:id="@+id/title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical|left|start"
+        android:textColor="@color/wh_selectable_list_text_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right|end"
+        android:background="@drawable/badge_bg"
+        android:paddingTop="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+</FrameLayout>

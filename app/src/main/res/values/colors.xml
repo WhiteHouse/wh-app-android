@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="wh_red">#FF990000</color>
+    <color name="wh_blue_lighter">#FF6E9DC6</color>
+    <color name="wh_blue_light">#FF305581</color>
+    <color name="wh_blue">#ff204571</color>
+    <color name="pressed_whitehouse">#CC204471</color>
+    <color name="meta_gray">#DDAAAAAA</color>
+    <color name="wh_blue_light_translucent">#30305581</color>
+
+    <color name="wh_primary_blue">#FF003366</color>
+    <color name="wh_primary_blue2">#FF336699</color>
+    <color name="wh_primary_blue_dark">#FF001A4D</color>
+    <color name="wh_primary_red">#FF880000</color>
+    <color name="wh_primary_tan">#FFB27F43</color>
+    <color name="wh_primary_gray">#FF666666</color>
+    <color name="wh_primary_green">#FF669900</color>
+
+    <color name="wh_secondary_blue">#FF7DA2C1</color>
+    <color name="wh_secondary_tan">#FFC1935C</color>
+    <color name="wh_secondary_air">#FFE1E8EE</color>
+    <color name="wh_secondary_gray">#FF383838</color>
+    <color name="wh_secondary_orange">#FFF08200</color>
+
+    <color name="colorPrimary">@color/wh_primary_blue</color>
+    <color name="colorPrimaryDark">@color/wh_primary_blue_dark</color>
+    <color name="colorAccent">@color/wh_secondary_blue</color>
+
+    <color name="feed_item_normal">@android:color/transparent</color>
+    <color name="feed_item_focused">#cc1b71c8</color>
+    <color name="feed_item_text_normal">@color/wh_blue</color>
+    <color name="feed_item_text_focused">@android:color/white</color>
+
+    <color name="feed_meta_dark_background">#CC111111</color>
+    <color name="dashboard_header_background">#B4B3B3</color>
+    <color name="dashboard_background">#FFDDDDDD</color>
+    <color name="dashboard_text">#DD333333</color>
+
+    <color name="dashboard_item_normal">@android:color/transparent</color>
+    <color name="dashboard_item_focused">#d2d2d2</color>
+
+    <color name="search_stroke_normal">#CCCCCCCC</color>
+    <color name="search_stroke_focused">#EEEEEEEE</color>
+    <color name="search_stroke_pressed">#EEDDDDDD</color>
+    <color name="search_text_color">#FFFFFF</color>
+    <color name="search_results_background">#A1A1A1</color>
+</resources>

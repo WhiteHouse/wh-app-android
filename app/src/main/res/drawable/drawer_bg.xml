@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <color android:color="@color/wh_secondary_gray" />
+    </item>
+
+    <item android:bottom="12dp">
+        <bitmap
+            android:src="@drawable/ic_presidential_seal"
+            android:gravity="center_horizontal|bottom"
+            />
+    </item>
+</layer-list>

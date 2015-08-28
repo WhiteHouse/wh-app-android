@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/action_share"
+        android:title="Share"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        />
+
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_action_bookmark_outline"
+        android:menuCategory="container"
+        android:title="Favorite"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_unfavorite"
+        android:icon="@drawable/ic_action_bookmark"
+        android:menuCategory="container"
+        android:title="Unfavorite"
+        app:showAsAction="ifRoom"
+        />
+</menu>

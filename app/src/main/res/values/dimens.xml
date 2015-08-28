@@ -1,0 +1,16 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="card_horizontal_padding">16dp</dimen>
+    <dimen name="card_vertical_padding">16dp</dimen>
+
+    <dimen name="drawer_max_width">320dp</dimen>
+
+    <dimen name="drawer_elevation">6dp</dimen>
+
+    <dimen name="drawer_logo_height">160dp</dimen>
+
+    <dimen name="list_thumbnail_height">210dp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_title"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/actionBarSize"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:textAllCaps="true"
+    android:textColor="@color/wh_tab_selectable_text"
+    />

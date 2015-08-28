@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="ga_anonymizeIp">true</bool>
+
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <integer name="ga_sessionTimeout">300</integer>
+
+    <string name="ga_trackingId">UA-12099831-1</string>
+</resources>

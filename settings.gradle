@@ -1,0 +1,3 @@
+include ':app', ':data', ':urbanairship-lib-5.1.4'
+
+include ':ExoPlayer:library'

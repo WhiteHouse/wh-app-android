@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.WhiteHouse.Base" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/wh_secondary_air</item>
+    </style>
+
+    <style name="Theme.WhiteHouse" parent="Theme.WhiteHouse.Base">
+    </style>
+</resources>
