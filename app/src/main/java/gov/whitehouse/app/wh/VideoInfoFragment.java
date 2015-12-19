@@ -234,7 +234,7 @@ class VideoInfoFragment extends BaseFragment
         if (mMenu == null) {
             onCreateToolbar(getToolbar());
         }
-        mTitle.setText(mFeedItem.title());
+        mTitle.setText(mFeedItem.displayTitle());
         mTitle.setTypeface(Typeface.SERIF);
         mPicasso.load(mFeedItem.getBestThumbnailUrl(1080))
                 .error(R.drawable.error_thumbnail)

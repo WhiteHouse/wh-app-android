@@ -459,6 +459,11 @@ class VideoPlayerFragment extends BaseFragment
     }
 
     @Override
+    public void onDecoderInitialized(String decoderName, long elapsedRealtimeMs, long initializationDurationMs) {
+
+    }
+
+    @Override
     public
     void onPlayerStateChanged(boolean playWhenReady, int playbackState)
     {

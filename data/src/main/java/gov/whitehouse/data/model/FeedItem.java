@@ -3,6 +3,8 @@ package gov.whitehouse.data.model;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.os.SystemClock;
+import android.text.Html;
+import android.text.Spanned;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -55,6 +57,10 @@ class FeedItem implements Parcelable
 
     public abstract String
     videoLink();
+
+    public Spanned displayTitle() {
+        return Html.fromHtml(this.title());
+    }
 
     public String
     getBestThumbnailUrl(int idealWidth)
