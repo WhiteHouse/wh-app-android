@@ -16,6 +16,10 @@
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
 
+    <string name="live_bar_text_single">Live: %1$s</string>
+    <string name="live_bar_text_multiple">%1$s New Events. Watch Live!</string>
+    <string name="live_notification_title">Live @ %1$s</string>
+
     <string name="dashboard_config_url">http://www.whitehouse.gov/sites/default/files/feeds/config.json</string>
     <string name="live_feed_url">http://www.whitehouse.gov/feed/mobile/live</string>
 

@@ -79,9 +79,10 @@ class LiveService extends IntentService
                     .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
                     .setContentIntent(
                             PendingIntent.getActivity(this, 0, liveIntent, PendingIntent.FLAG_UPDATE_CURRENT))
-                    .setContentTitle("Live @ " + time.format(item.pubDate()))
-                    .setContentText(item.title())
-                    .setDefaults(NotificationCompat.DEFAULT_SOUND)
+                    .setContentTitle(String.format(
+                            getString(R.string.live_notification_title), time.format(item.pubDate())))
+                .setContentText(item.displayTitle())
+                .setDefaults(NotificationCompat.DEFAULT_SOUND)
                     .setExtras(new Bundle())
                     .setSmallIcon(R.drawable.ic_stat_wh)
                     .setSound(notifSound)

@@ -110,7 +110,7 @@ class FeedItemView extends FrameLayout implements Bindable<FeedItemData>
         } else {
             mTitle.setMinLines(1);
         }
-        mTitle.setText(data.item.title());
+        mTitle.setText(data.item.displayTitle());
         mTitle.setTypeface(Typeface.SERIF);
         mMetaContainer.setVisibility(View.VISIBLE);
         if (data.shouldShowDate) {

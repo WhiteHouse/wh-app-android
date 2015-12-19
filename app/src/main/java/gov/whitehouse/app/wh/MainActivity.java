@@ -653,9 +653,11 @@ public class MainActivity extends BaseActivity
             } else {
                 mHasLiveEvents = true;
                 if (feedItems.size() == 1) {
-                    mLiveBar.setText("Live: " + feedItems.get(0).title());
+                    mLiveBar.setText(String.format(getString(R.string.live_bar_text_single),
+                            feedItems.get(0).displayTitle()));
                 } else {
-                    mLiveBar.setText(Integer.toString(feedItems.size()) + " New Events. Watch Live!");
+                    mLiveBar.setText(String.format(getString(R.string.live_bar_text_multiple),
+                            Integer.toString(feedItems.size())));
                 }
                 mLiveBar.setOnClickListener(v -> {
                     mDrawerLayoutCallbacks.clickLive();
