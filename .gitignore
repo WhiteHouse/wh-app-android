@@ -1,3 +1,10 @@
+# gradle
+.gradle/
+build/
+
+# ExoPlayer
+ExoPlayer/
+
 # built application files
 *.apk
 *.ap_

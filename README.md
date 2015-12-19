@@ -37,21 +37,10 @@ app's look and feel.
 
 The Android SDK for API level 16 is require to build the app.
 
-The White House app uses the following libraries, which are all
-included as submodules in `contrib/`:
+The White House app uses [ExoPlayer][], release [r1.3.3][]. You need to add the source of the
+library into the root directory of wh-app-android yourself, and do
 
-* [ActionBarSherlock][] - action bar for older versions of Android
-* [ViewPagerIndicator][] - paging indicators widgets
-* [Undergarment][] - slide-out view (side nav) support library
-
-To initialize the submodules, run:
-
-    git submodule update --init
-
-The following libraries are included as source:
-
-* [Zepto.js][]
-* [Underscore.js][]
+    git checkout r1.3.3
 
 ### Code Style
 
@@ -124,12 +113,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-
-[ActionBarSherlock]: http://actionbarsherlock.com/
-[ViewPagerIndicator]: https://github.com/JakeWharton/Android-ViewPagerIndicator
-[Undergarment]: https://github.com/eddieringle/android-undergarment
-[Underscore.js]: http://underscorejs.org/
-[Zepto.js]: http://zeptojs.com/
+[ExoPlayer]: https://github.com/google/ExoPlayer
+[r1.3.3]: https://github.com/google/ExoPlayer/releases/tag/r1.3.3
 
 [style]: http://source.android.com/source/code-style.html
 [forking]: https://help.github.com/articles/fork-a-repo
