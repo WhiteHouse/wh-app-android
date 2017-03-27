@@ -66,14 +66,14 @@ House for Android mobile application. The application ships with
 "white label" placeholder assets that should be replaced by the
 developer.
 
-##Roadmap
+## Roadmap
 
 Have an idea or question about future features for White House for
 Android? Let us know by opening a ticket on GitHub, tweeting @WHWeb,
 or via our tech feedback form:
 http://www.whitehouse.gov/tech/feedback.
 
-##Contributing
+## Contributing
 
 Anyone is encouraged to contribute to the project by
 [forking][] and submitting
