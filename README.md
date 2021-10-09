@@ -1,4 +1,4 @@
-# White House for Android mobile application
+# White House for Android mobile application:-
 
 A native Android (Java) app designed to fetch, cache, and display
 multiple feeds containing articles, photos, and live and on demand
@@ -8,7 +8,7 @@ notifications.
 This application is under active development and will continue to be
 modified and improved over time.
 
-## Goals
+## Goals:-
 
 By releasing the source code for this app we hope to empower other
 governments and organizations to build and release mobile apps to
@@ -16,16 +16,16 @@ engage their own citizens and constituencies. In addition, public
 review and contribution to the application's code base will help
 strengthen and improve the app.
 
-## Requirements
+## Requirements:-
 
 1. Android 2.2 "Froyo" or higher
 2. RSS feeds for content to be aggregated and displayed by the app
 
-## Recommended
+## Recommended:-
 
 1. Android 3.1 "Honeycomb" or higher is required for live video streaming.
 
-## Usage
+## Usage:-
 
 Mobile developers will be able to configure the application to
 retrieve and display content from arbitrary RSS feeds. The developer
@@ -33,7 +33,7 @@ will be able to configure the app to receive push
 notifications. Placeholder assets may be replaced to customize the
 app's look and feel.
 
-### Building the App
+### Building the App:-
 
 The Android SDK for API level 16 is require to build the app.
 
@@ -53,7 +53,7 @@ The following libraries are included as source:
 * [Zepto.js][]
 * [Underscore.js][]
 
-### Code Style
+### Code Style:-
 
 Contributers are expected to adhere to the official [Android
 Code Style Guidelines][style].
@@ -66,14 +66,14 @@ House for Android mobile application. The application ships with
 "white label" placeholder assets that should be replaced by the
 developer.
 
-##Roadmap
+##Roadmap:-
 
 Have an idea or question about future features for White House for
 Android? Let us know by opening a ticket on GitHub, tweeting @WHWeb,
 or via our tech feedback form:
 http://www.whitehouse.gov/tech/feedback.
 
-##Contributing
+##Contributing:-
 
 Anyone is encouraged to contribute to the project by
 [forking][] and submitting
